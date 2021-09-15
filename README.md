@@ -1,5 +1,13 @@
 # Messenger
 
+# Tech Stack used in this project
+
+# Fontend
+React, Metarial UI, 
+
+# Backend
+Node, Postgres, Sequelize, Socket.io
+
 A one-to-one realtime chat app.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
