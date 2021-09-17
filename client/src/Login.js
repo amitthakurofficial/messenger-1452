@@ -10,6 +10,8 @@ import {
   TextField,
 } from "@material-ui/core";
 import { login } from "./store/utils/thunkCreators";
+import { backgroundImg } from "./components/constant";
+import AuthWrapper from "./auth.style";
 
 const Login = (props) => {
   const history = useHistory();
@@ -28,41 +30,62 @@ const Login = (props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Box>
-        <Grid container item>
-          <Typography>Need to register?</Typography>
-          <Button onClick={() => history.push("/register")}>Register</Button>
-        </Grid>
-        <form onSubmit={handleLogin}>
+    <AuthWrapper>
+    <Grid container
+      direction="row"
+      // alignItems="center"
+      >
+      <Grid>
+        <img className="side-img" src={backgroundImg} alt="bg" />
+      </Grid>
+      <Box
+        sx={{
+          width: 550,
+          maxWidth: '100%',
+        }}
+        className="center-items"
+      >
+      <Grid className="header-section">
+        <Typography className="mr-20 acc-text">Don’t have an account?</Typography>
+        <Button className="signup-btn" onClick={() => history.push("/register")}>Create Account</Button>
+      </Grid>
+      <form onSubmit={handleLogin} className="form">
+        <Grid> 
+          <Grid className="mb-25">
+          <span className="account-label">Welcome Back!</span>
+          </Grid>
           <Grid>
-            <Grid>
-              <FormControl margin="normal" required>
-                <TextField
-                  aria-label="username"
-                  label="Username"
-                  name="username"
-                  type="text"
-                />
-              </FormControl>
-            </Grid>
-            <FormControl margin="normal" required>
+            <FormControl fullWidth>
               <TextField
-                label="password"
-                aria-label="password"
-                type="password"
-                name="password"
+                className="mb-25"
+                aria-label="username"
+                label="Username"
+                name="username"
+                type="text"
+                required
               />
             </FormControl>
-            <Grid>
-              <Button type="submit" variant="contained" size="large">
-                Login
-              </Button>
-            </Grid>
           </Grid>
-        </form>
-      </Box>
-    </Grid>
+          <Grid>
+          <FormControl fullWidth margin="normal" required>
+            <TextField
+              label="password"
+              aria-label="password"
+              type="password"
+              name="password"
+            />
+          </FormControl>
+          </Grid>
+          <Grid className="text-center mt-10">
+          <Button className="button" type="submit" variant="contained" size="large">
+            Login
+          </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Box>
+  </Grid>
+  </AuthWrapper>
   );
 };
 

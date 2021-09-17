@@ -11,6 +11,8 @@ import {
   FormHelperText,
 } from "@material-ui/core";
 import { register } from "./store/utils/thunkCreators";
+import { backgroundImg } from "./components/constant";
+import AuthWrapper from './auth.style.js'
 
 const Login = (props) => {
   const history = useHistory();
@@ -37,17 +39,32 @@ const Login = (props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Box>
-        <Grid container item>
-          <Typography>Need to log in?</Typography>
-          <Button onClick={() => history.push("/login")}>Login</Button>
+    <AuthWrapper>
+      <Grid container
+        direction="row"
+        // alignItems="center"
+        >
+        <img className="side-img" src={backgroundImg} alt="bg" />
+        <Box
+          sx={{
+            width: 550,
+            maxWidth: '100%',
+          }}
+          className="center-items"
+        >
+        <Grid item className="header-section">
+          <Typography className="mr-20 acc-text">Already have an account?</Typography>
+          <Button className="login-button" onClick={() => history.push("/login")}>Login</Button>
         </Grid>
-        <form onSubmit={handleRegister}>
-          <Grid>
+        <form onSubmit={handleRegister} className="form">
+          <Grid> 
+            <Grid className="mb-25">
+            <span className="account-label">Create an Account</span>
+            </Grid>
             <Grid>
-              <FormControl>
+              <FormControl fullWidth>
                 <TextField
+                  className="mb-25"
                   aria-label="username"
                   label="Username"
                   name="username"
@@ -57,8 +74,9 @@ const Login = (props) => {
               </FormControl>
             </Grid>
             <Grid>
-              <FormControl>
+              <FormControl fullWidth>
                 <TextField
+                  className="mb-25"
                   label="E-mail address"
                   aria-label="e-mail address"
                   type="email"
@@ -68,8 +86,9 @@ const Login = (props) => {
               </FormControl>
             </Grid>
             <Grid>
-              <FormControl error={!!formErrorMessage.confirmPassword}>
+              <FormControl error={!!formErrorMessage.confirmPassword} fullWidth>
                 <TextField
+                  className="mb-25"
                   aria-label="password"
                   label="Password"
                   type="password"
@@ -83,8 +102,9 @@ const Login = (props) => {
               </FormControl>
             </Grid>
             <Grid>
-              <FormControl error={!!formErrorMessage.confirmPassword}>
+              <FormControl error={!!formErrorMessage.confirmPassword} fullWidth>
                 <TextField
+                  className="mb-25"
                   label="Confirm Password"
                   aria-label="confirm password"
                   type="password"
@@ -97,13 +117,16 @@ const Login = (props) => {
                 </FormHelperText>
               </FormControl>
             </Grid>
-            <Button type="submit" variant="contained" size="large">
+            <Grid className="text-center mt-10">
+            <Button className="button" type="submit" variant="contained" size="large">
               Create
             </Button>
+            </Grid>
           </Grid>
         </form>
       </Box>
     </Grid>
+    </AuthWrapper>
   );
 };
 
